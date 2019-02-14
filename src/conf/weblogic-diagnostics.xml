@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<wldf-resource xmlns="http://www.bea.com/ns/weblogic/weblogic-diagnostics"
+ xmlns:sec="http://www.bea.com/ns/weblogic/90/security"
+ xmlns:wls="http://www.bea.com/ns/weblogic/90/security/wls"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:schemaLocation="http://www.bea.com/ns/weblogic/weblogic-diagnostics
+ http://www.bea.com/ns/weblogic/weblogic-diagnostics/1.1/weblogic-diagnostics.xsd">
+
+  <name>weblogic-diagnostics</name>
+  <instrumentation>
+    <enabled>true</enabled>
+    <wldf-instrumentation-monitor>
+      <name>Servlet_Around_Service</name>
+      <enabled>true</enabled>
+            <action>MemoryAllocationStatisticsAction</action>
+            <action>MethodInvocationStatisticsAction</action>
+            <action>TraceElapsedTimeAction</action>
+            <action>TraceMemoryAllocationAction</action>                                                
+      </wldf-instrumentation-monitor>
+
+      <wldf-instrumentation-monitor>
+      <name>Servlet_Around_Session</name>
+      <enabled>true</enabled>
+            <action>MemoryAllocationStatisticsAction</action>
+            <action>MethodInvocationStatisticsAction</action>
+            <action>TraceElapsedTimeAction</action>
+            <action>TraceMemoryAllocationAction</action>
+      </wldf-instrumentation-monitor>      
+
+    <wldf-instrumentation-monitor>
+      <name>Servlet_Around_Tags</name>
+      <enabled>true</enabled>
+            <action>MemoryAllocationStatisticsAction</action>
+            <action>MethodInvocationStatisticsAction</action>
+            <action>TraceElapsedTimeAction</action>
+            <action>TraceMemoryAllocationAction</action>
+      </wldf-instrumentation-monitor>  
+
+  </instrumentation> 
+</wldf-resource> 

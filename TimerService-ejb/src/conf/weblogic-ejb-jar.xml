@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<weblogic-ejb-jar xmlns="http://xmlns.oracle.com/weblogic/weblogic-ejb-jar" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/ejb-jar_3_1.xsd http://xmlns.oracle.com/weblogic/weblogic-ejb-jar http://xmlns.oracle.com/weblogic/weblogic-ejb-jar/1.6/weblogic-ejb-jar.xsd">
+    
+    <weblogic-enterprise-bean>
+        <ejb-name>EjbTimerServiceBean</ejb-name> 
+        <jndi-name>ejb/EjbTimerServiceBean</jndi-name>
+        <dispatch-policy>timerservice_ejb_workmanager</dispatch-policy>
+        <transaction-descriptor>
+            <trans-timeout-seconds>30</trans-timeout-seconds>
+        </transaction-descriptor>
+        <remote-client-timeout>30</remote-client-timeout>
+        <stateless-session-descriptor>
+          <pool>
+            <max-beans-in-free-pool>40</max-beans-in-free-pool>
+            <initial-beans-in-free-pool>20</initial-beans-in-free-pool>
+          </pool>
+          <stateless-clustering>
+            <home-is-clusterable>false</home-is-clusterable>
+            <stateless-bean-is-clusterable>false</stateless-bean-is-clusterable>
+          </stateless-clustering>
+        </stateless-session-descriptor>
+    </weblogic-enterprise-bean>
+
+    <weblogic-enterprise-bean>
+        <ejb-name>EjbTimerServiceStateFulBean</ejb-name> 
+        <jndi-name>ejb/EjbTimerServiceStateFulBean</jndi-name>
+        <dispatch-policy>timerservice_ejb_workmanager</dispatch-policy>
+        <stateful-session-descriptor>
+            <allow-concurrent-calls></allow-concurrent-calls>
+            <stateful-session-cache>
+                <max-beans-in-cache>10</max-beans-in-cache>
+                <idle-timeout-seconds>60</idle-timeout-seconds>
+            </stateful-session-cache>
+            <persistent-store-dir></persistent-store-dir>
+            <stateful-session-clustering></stateful-session-clustering>
+        </stateful-session-descriptor>
+    </weblogic-enterprise-bean>
+    
+    <work-manager>
+        <name>timerservice_ejb_workmanager</name>
+        <max-threads-constraint>
+            <name>timerservice_ejb_max-threads</name>
+            <count>10</count>
+            <!--pool-name>timerservice_ejb_pool</pool-name-->
+        </max-threads-constraint>
+        <capacity>
+            <name>timerservice_ejb_capacity</name>
+            <count>20</count>
+        </capacity>
+    </work-manager>            
+</weblogic-ejb-jar>
